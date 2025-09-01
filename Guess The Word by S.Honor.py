@@ -65,5 +65,12 @@ print("\nGame Over! Final Scores:")
 for player, score in scores.items():
     print(f"{player}: {score}")
 
-winner = max(scores, key=scores.get)
-print(f"Winner is {winner}!")
+highest_score = max(scores.values())
+if highest_score == 0:
+    print("Really...? Not a single one...? Yikes guys.")
+else:
+    winners = [player for player, score in scores.items() if score == highest_score]
+    if len(winners) == 1:
+        print(f"Winner is {winners[0]} with {highest_score} points!")
+    else:
+        print(f"It's a tie! Winners: {', '.join(winners)} with {highest_score} points each.")
